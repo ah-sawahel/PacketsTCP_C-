@@ -22,13 +22,6 @@ void sig_exit(int s)
     exit(0);
 }
 
-//void CreateFolder(const string path)
-//{
-//    if (!fs::is_directory(path) || !fs::exists(path)) {
-//    fs::create_directory(path);
-//    }
-//}
-
 void CreateLogFileInNewDir(string content){
     string outputFolderName = "output";
     outputFolderName.append(to_string(fileNumber++));
@@ -45,7 +38,8 @@ void CreateLogFileInNewDir(string content){
 
 void ClientTCP :: run()
 {
-    // Waiting for connection
+    /* Waiting for connection */
+
     signal(SIGINT, sig_exit);
     bool connected = false;
     std::cout << "TRYING TO CONNECT.." << std::endl;
@@ -80,8 +74,8 @@ void ClientTCP :: run()
             Singleton* s = Singleton::getInstance();
             s->packetSizes.push_back(packetSize);
             s->stringLengthes.push_back(stringLengh);
-//            s->updateTables(packetSize, stringLengh);
         }
+
         buffer = "";
         while(receivingBuffer){
             packetString = tcp.receive();
@@ -94,6 +88,7 @@ void ClientTCP :: run()
                 buffer.append(packetString);
             }
         }
+
         if(buffer != ""){
             data.push_back(buffer);
             cout << "buffer received: \n" << buffer << std::endl;

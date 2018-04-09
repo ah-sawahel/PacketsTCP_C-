@@ -14,8 +14,21 @@ void * loop(void * m)
 
     cout << "Enter Number Of Packets: " << endl;
     cin >> numberOfPackets;
+    while(cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
+            cout << "ERROR! Please enter an integer for number of packets " << endl;
+            cin >> numberOfPackets;
+    }
+    
     cout << "Enter Packet Size: " << endl;
     cin >> stringLength;
+    while(cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
+            cout << "ERROR! Please enter an integer for packet size " << endl;
+            cin >> stringLength;
+    }
 
     tcp.Send("start");
     usleep(10);
@@ -41,7 +54,7 @@ void * loop(void * m)
       usleep(50);
     }
     tcp.Send("end");
-    usleep(100);
+    usleep(10);
   //  tcp.clean();
 
 	}
