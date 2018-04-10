@@ -1,2 +1,3 @@
-sr #1
-mt #2
+spkg #1
+zgdp #2
+mcbd #3

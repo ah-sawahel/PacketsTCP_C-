@@ -20,7 +20,7 @@ void * loop(void * m)
             cout << "ERROR! Please enter an integer for number of packets " << endl;
             cin >> numberOfPackets;
     }
-    
+
     cout << "Enter Packet Size: " << endl;
     cin >> stringLength;
     while(cin.fail()) {
@@ -51,12 +51,10 @@ void * loop(void * m)
       packetString += '\n';
 			cout << "Message:" << packetString << endl;
 			tcp.Send(packetString);
-      usleep(50);
+      usleep(10);
     }
     tcp.Send("end");
     usleep(10);
-  //  tcp.clean();
-
 	}
 	tcp.detach();
 }
@@ -65,6 +63,7 @@ int main()
 {
 	pthread_t msg;
 	tcp.setup(8080);
+  std::cout << "Server running on port: 8080" << std::endl;
 	if( pthread_create(&msg, NULL, loop, (void *)0) == 0)
 	{
 		tcp.receive();

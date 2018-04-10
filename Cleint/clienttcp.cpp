@@ -22,6 +22,7 @@ void sig_exit(int s)
     exit(0);
 }
 
+/* Create Folders with sequencial ids and save log files in them */
 void CreateLogFileInNewDir(string content){
     string outputFolderName = "output";
     outputFolderName.append(to_string(fileNumber++));
@@ -52,16 +53,18 @@ void ClientTCP :: run()
     if(!QDir("output").exists())
         QDir().mkdir("output");
 
-    // Initializing buffer and packet string
+    /* Initializing buffer and packet string */
     bool receivingBuffer = false;
     string buffer = "";
     string packetString = "";
 
-    // Receiving thread
+    /* Receiving thread */
     while(1)
     {
         srand(time(0));
         string rec = tcp.receive();
+
+        /* Start receiving a new message */
         if(rec == "start"){
             receivingBuffer = true;
             std::cout << "Receiving new packet!" << std::endl;
@@ -71,14 +74,19 @@ void ClientTCP :: run()
             std::cout << "string length --> " << stringLengh << std::endl;
             packetSizes.push_back(packetSize);
             stringLenthes.push_back(stringLengh);
+
+            /* Update vectors in singelton class */
             Singleton* s = Singleton::getInstance();
             s->packetSizes.push_back(packetSize);
             s->stringLengthes.push_back(stringLengh);
         }
 
+        /* Receive text */
         buffer = "";
         while(receivingBuffer){
             packetString = tcp.receive();
+
+            /* Stop when receiving "end" message */
             if(packetString == "end"){
                 receivingBuffer = false;
                 break;
@@ -89,6 +97,7 @@ void ClientTCP :: run()
             }
         }
 
+        /* Save log file in new folder */
         if(buffer != ""){
             data.push_back(buffer);
             cout << "buffer received: \n" << buffer << std::endl;

@@ -28,6 +28,7 @@ private slots:
 
     void on_button_clicked();
 
+    void updateGraphs();
     void setupGraph();
 
 private:

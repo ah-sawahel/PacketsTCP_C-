@@ -23,9 +23,9 @@ Client::Client(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //update tables timer
+    /* Timer for  */
     timer = new QTimer(this);
-    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(on_button_clicked()));
+    QObject::connect(timer, SIGNAL(timeout()), this, SLOT(updateGraphs()));
     timer->start(1000);
     ui->table->setHorizontalHeaderItem(0, new QTableWidgetItem("# Packets"));
     ui->table->setHorizontalHeaderItem(1, new QTableWidgetItem("Packet Size"));
@@ -48,6 +48,12 @@ void Client::on_pushButton_clicked()
 
 void Client::on_button_clicked()
 {
+
+}
+
+/* Update graph values from Singelton */
+void Client::updateGraphs()
+{
     Singleton* s = Singleton::getInstance();
     for (int i = row; i < s->packetSizes.size(); ++i) {
         string str = s->packetSizes[i];
@@ -62,12 +68,13 @@ void Client::on_button_clicked()
     setupGraph();
 }
 
+/* Update BarChart graph */
 void Client::setupGraph()
 {
     Singleton* s = Singleton::getInstance();
     QCPBars *myBars = new QCPBars(ui->graph->xAxis, ui->graph->yAxis);
     ui->graph->addPlottable(myBars);
-    // now we can modify properties of myBars:
+
     myBars->setName("Bar Chart");
     QVector<double> keyData;
     QVector<double> valueData;
@@ -82,8 +89,6 @@ void Client::setupGraph()
         bar++;
     }
 
-//    keyData << 1 << 2 << 3;
-//    valueData << 2 << 4 << 8;
     myBars->setData(keyData, valueData);
     ui->graph->rescaleAxes();
     ui->graph->replot();
