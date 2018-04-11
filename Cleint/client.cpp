@@ -23,10 +23,10 @@ Client::Client(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    /* Timer for  */
+    /* Timer for updating tables, TODO: improve by using observer and invoke from thread */
     timer = new QTimer(this);
     QObject::connect(timer, SIGNAL(timeout()), this, SLOT(updateGraphs()));
-    timer->start(1000);
+    timer->start(100);
     ui->table->setHorizontalHeaderItem(0, new QTableWidgetItem("# Packets"));
     ui->table->setHorizontalHeaderItem(1, new QTableWidgetItem("Packet Size"));
 }
@@ -34,21 +34,6 @@ Client::Client(QWidget *parent) :
 Client::~Client()
 {
     delete ui;
-}
-
-void Client::on_table_activated(const QModelIndex &index)
-{
-
-}
-
-void Client::on_pushButton_clicked()
-{
-
-}
-
-void Client::on_button_clicked()
-{
-
 }
 
 /* Update graph values from Singelton */

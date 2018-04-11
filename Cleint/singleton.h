@@ -18,7 +18,6 @@ public:
     vector<string> packetSizes;
     vector<string> stringLengthes;
     void registerUI(QPushButton *client);
-    void updateTables(string packetSize, string stringLength);
 };
 
 #endif // SINGLETON_H

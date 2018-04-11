@@ -56,6 +56,11 @@ public:
         graph = new QCustomPlot(centralWidget);
         graph->setObjectName(QStringLiteral("graph"));
         graph->setGeometry(QRect(19, 29, 411, 261));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(graph->sizePolicy().hasHeightForWidth());
+        graph->setSizePolicy(sizePolicy1);
         Client->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Client);
         menuBar->setObjectName(QStringLiteral("menuBar"));

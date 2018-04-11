@@ -42,9 +42,5 @@ void Singleton::registerUI(QPushButton *client) {
    clients.push_back(client);
 }
 
-void Singleton::updateTables(string packetSize, string stringLength){
-
-}
-
 Singleton::Singleton()
 {}

@@ -81,9 +81,9 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Client *_t = static_cast<Client *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_table_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 1: _t->on_pushButton_clicked(); break;
-        case 2: _t->on_button_clicked(); break;
+        case 0:  break;
+        case 1:  break;
+        case 2:  break;
         case 3: _t->updateGraphs(); break;
         case 4: _t->setupGraph(); break;
         default: ;

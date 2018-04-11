@@ -103,6 +103,6 @@ void ClientTCP :: run()
             cout << "buffer received: \n" << buffer << std::endl;
             CreateLogFileInNewDir(buffer);
         }
-        sleep(1);
+//        sleep(1);
     }
 }
