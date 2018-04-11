@@ -10,5 +10,6 @@ class ClientTCP : public QThread
 {
 private:
     void run();
+    void reconnect();
 };
 #endif // CLIENTTCP_H

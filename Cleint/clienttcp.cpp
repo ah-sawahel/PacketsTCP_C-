@@ -37,6 +37,20 @@ void CreateLogFileInNewDir(string content){
     out.close();
 }
 
+void ClientTCP :: reconnect()
+{
+    TCPClient newtcp;
+    signal(SIGINT, sig_exit);
+    bool connected = false;
+    std::cout << "TRYING TO CONNECT.." << std::endl;
+    while(!connected){
+        connected = newtcp.setup("127.0.0.1",8080);
+        usleep(1000000);
+    }
+    tcp = newtcp;
+    cout << "CONNECTED!" << std::endl;
+}
+
 void ClientTCP :: run()
 {
     /* Waiting for connection */
@@ -63,6 +77,11 @@ void ClientTCP :: run()
     {
         srand(time(0));
         string rec = tcp.receive();
+        bool recEmpty = rec == "";
+
+        /* Check if receiving empty and reconnect */
+        if(recEmpty)
+            reconnect();
 
         /* Start receiving a new message */
         if(rec == "start"){
@@ -103,6 +122,5 @@ void ClientTCP :: run()
             cout << "buffer received: \n" << buffer << std::endl;
             CreateLogFileInNewDir(buffer);
         }
-//        sleep(1);
     }
 }

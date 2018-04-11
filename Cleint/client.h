@@ -22,12 +22,6 @@ public:
     void updateTable(char* packet, char* size);
 
 private slots:
-    void on_table_activated(const QModelIndex &index);
-
-    void on_pushButton_clicked();
-
-    void on_button_clicked();
-
     void updateGraphs();
     void setupGraph();
 

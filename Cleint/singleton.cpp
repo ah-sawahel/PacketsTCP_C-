@@ -28,6 +28,7 @@ class Singleton
 /* Null, because instance will be initialized on demand. */
 Singleton* Singleton::instance = 0;
 
+/* Get single instance */
 Singleton* Singleton::getInstance()
 {
     if (instance == 0)
@@ -36,10 +37,6 @@ Singleton* Singleton::getInstance()
     }
 
     return instance;
-}
-
-void Singleton::registerUI(QPushButton *client) {
-   clients.push_back(client);
 }
 
 Singleton::Singleton()

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Client_t {
-    QByteArrayData data[8];
-    char stringdata0[97];
+    QByteArrayData data[4];
+    char stringdata0[32];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,18 +30,12 @@ struct qt_meta_stringdata_Client_t {
 static const qt_meta_stringdata_Client_t qt_meta_stringdata_Client = {
     {
 QT_MOC_LITERAL(0, 0, 6), // "Client"
-QT_MOC_LITERAL(1, 7, 18), // "on_table_activated"
-QT_MOC_LITERAL(2, 26, 0), // ""
-QT_MOC_LITERAL(3, 27, 5), // "index"
-QT_MOC_LITERAL(4, 33, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(5, 55, 17), // "on_button_clicked"
-QT_MOC_LITERAL(6, 73, 12), // "updateGraphs"
-QT_MOC_LITERAL(7, 86, 10) // "setupGraph"
+QT_MOC_LITERAL(1, 7, 12), // "updateGraphs"
+QT_MOC_LITERAL(2, 20, 0), // ""
+QT_MOC_LITERAL(3, 21, 10) // "setupGraph"
 
     },
-    "Client\0on_table_activated\0\0index\0"
-    "on_pushButton_clicked\0on_button_clicked\0"
-    "updateGraphs\0setupGraph"
+    "Client\0updateGraphs\0\0setupGraph"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +45,7 @@ static const uint qt_meta_data_Client[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,16 +53,10 @@ static const uint qt_meta_data_Client[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   39,    2, 0x08 /* Private */,
-       4,    0,   42,    2, 0x08 /* Private */,
-       5,    0,   43,    2, 0x08 /* Private */,
-       6,    0,   44,    2, 0x08 /* Private */,
-       7,    0,   45,    2, 0x08 /* Private */,
+       1,    0,   24,    2, 0x08 /* Private */,
+       3,    0,   25,    2, 0x08 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QModelIndex,    3,
-    QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -81,14 +69,12 @@ void Client::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Client *_t = static_cast<Client *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0:  break;
-        case 1:  break;
-        case 2:  break;
-        case 3: _t->updateGraphs(); break;
-        case 4: _t->setupGraph(); break;
+        case 0: _t->updateGraphs(); break;
+        case 1: _t->setupGraph(); break;
         default: ;
         }
     }
+    Q_UNUSED(_a);
 }
 
 const QMetaObject Client::staticMetaObject = {
@@ -116,13 +102,13 @@ int Client::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 2;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 2)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 2;
     }
     return _id;
 }
